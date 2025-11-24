@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "pathname"
+
+root = Pathname.new(__dir__).realpath rescue Pathname.new(__dir__)
+lib_path = root.join("..", "lib").expand_path
+
+$LOAD_PATH.unshift(lib_path.to_s) unless $LOAD_PATH.include?(lib_path.to_s)
+
+begin
+  require "bundler/setup"
+rescue LoadError
+  # Running outside Bundler; proceed with the existing load path
+end
+
+require "specbug"
+
+Specbug::App.new.run
