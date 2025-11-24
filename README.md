@@ -58,6 +58,10 @@ An initial scaffold is available in `bin/specbug` with supporting code in `lib/s
    bundle exec bin/specbug
    ```
 
+   If you symlink `bin/specbug` into your `$PATH`, the launcher now resolves the
+   real file location to load `lib/specbug` correctly and will attempt to load
+   your project’s Bundler environment so Rails or other app gems are available.
+
 Controls are intentionally minimal for the first cut:
 
 - **↑ / ↓** to move between discovered spec files.
